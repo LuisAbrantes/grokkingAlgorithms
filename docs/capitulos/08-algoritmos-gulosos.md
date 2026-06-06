@@ -9,10 +9,11 @@ têm solução exata eficiente conhecida (**NP-completos**).
 
 ## Analogia
 
-!!! note "Analogia: encher a mochila com o item mais valioso"
-    Numa loja com tempo limitado, você pega sempre o item mais caro que ainda cabe
-    na mochila. Nem sempre é a combinação ótima, mas é uma estratégia rápida e
-    geralmente boa.
+:::note[Analogia: encher a mochila com o item mais valioso]
+Numa loja com tempo limitado, você pega sempre o item mais caro que ainda cabe
+na mochila. Nem sempre é a combinação ótima, mas é uma estratégia rápida e
+geralmente boa.
+:::
 
 ## Problema da cobertura de conjuntos
 
@@ -64,39 +65,64 @@ solução gulosa/aproximada):
   casos**.
 - Envolve uma **sequência** (caixeiro-viajante) ou um **conjunto** (cobertura).
 
-!!! info "Big-O proibitivo"
-    - Caixeiro-viajante (força bruta): **O(n!)**.
-    - Cobertura de conjuntos (exata): **O(2ⁿ)**.
+:::info[Big-O proibitivo]
+- Caixeiro-viajante (força bruta): **O(n!)**.
+- Cobertura de conjuntos (exata): **O(2ⁿ)**.
 
-    Para esses, o guloso troca a garantia de otimalidade por **velocidade** e uma
-    resposta "boa o suficiente".
+Para esses, o guloso troca a garantia de otimalidade por **velocidade** e uma
+resposta "boa o suficiente".
+:::
 
 ## Dúvidas comuns
 
-??? question "Guloso sempre dá a resposta ótima?"
-    **Não.** Ele dá a melhor escolha **local**, que nem sempre leva à ótima global.
-    Mas costuma ser uma aproximação muito boa — e às vezes é ótima (depende do
-    problema).
+<details>
+<summary>Guloso sempre dá a resposta ótima?</summary>
 
-??? question "Como reconheço um problema NP-completo?"
-    Quando ele exige testar combinações/permutações de tudo e não há forma de
-    quebrá-lo eficientemente. Veja a lista de sinais acima.
+**Não.** Ele dá a melhor escolha **local**, que nem sempre leva à ótima global.
+Mas costuma ser uma aproximação muito boa — e às vezes é ótima (depende do
+problema).
 
-??? question "Guloso × programação dinâmica?"
-    Guloso: rápido, aproximação, escolha local. DP: solução **ótima** exata quando
-    há subproblemas sobrepostos. Veja o [cap. 9](09-programacao-dinamica.md).
+</details>
+
+<details>
+<summary>Como reconheço um problema NP-completo?</summary>
+
+Quando ele exige testar combinações/permutações de tudo e não há forma de
+quebrá-lo eficientemente. Veja a lista de sinais acima.
+
+</details>
+
+<details>
+<summary>Guloso × programação dinâmica?</summary>
+
+Guloso: rápido, aproximação, escolha local. DP: solução **ótima** exata quando
+há subproblemas sobrepostos. Veja o [cap. 9](09-programacao-dinamica.md).
+
+</details>
 
 ## Exercícios
 
-??? success "8.1 — Por que não resolver a cobertura de conjuntos de forma exata?"
-    Porque seria O(2ⁿ): testar todos os subconjuntos de estações é inviável com
-    muitas estações.
+<details>
+<summary>8.1 — Por que não resolver a cobertura de conjuntos de forma exata?</summary>
 
-??? success "8.2 — A estratégia gulosa da cobertura dá sempre o mínimo?"
-    Não necessariamente — dá uma **boa aproximação**, geralmente próxima do ótimo.
+Porque seria O(2ⁿ): testar todos os subconjuntos de estações é inviável com
+muitas estações.
 
-??? success "8.3 — Cite dois problemas NP-completos do capítulo."
-    Caixeiro-viajante e cobertura de conjuntos.
+</details>
+
+<details>
+<summary>8.2 — A estratégia gulosa da cobertura dá sempre o mínimo?</summary>
+
+Não necessariamente — dá uma **boa aproximação**, geralmente próxima do ótimo.
+
+</details>
+
+<details>
+<summary>8.3 — Cite dois problemas NP-completos do capítulo.</summary>
+
+Caixeiro-viajante e cobertura de conjuntos.
+
+</details>
 
 ## Checklist de domínio
 

@@ -9,11 +9,12 @@ vez de olhar item por item.
 
 ## Analogia
 
-!!! note "Analogia: a lista telefônica"
-    Procurar "Silva" numa lista telefônica. A busca **linear** começa na primeira
-    página e vai virando uma a uma. A busca **binária** abre no meio: "Silva vem
-    antes ou depois daqui?" e descarta metade da lista de uma vez. Com 1 milhão de
-    nomes, a linear pode levar 1 milhão de passos; a binária leva ~20.
+:::note[Analogia: a lista telefônica]
+Procurar "Silva" numa lista telefônica. A busca **linear** começa na primeira
+página e vai virando uma a uma. A busca **binária** abre no meio: "Silva vem
+antes ou depois daqui?" e descarta metade da lista de uma vez. Com 1 milhão de
+nomes, a linear pode levar 1 milhão de passos; a binária leva ~20.
+:::
 
 ## Como funciona
 
@@ -65,44 +66,70 @@ print(pesquisaBinaria(minhaLista, 3))   # 1
 print(pesquisaBinaria(minhaLista, -1))  # None
 ```
 
-!!! warning "A lista PRECISA estar ordenada"
-    A busca binária só funciona em listas **ordenadas**. Se a sua lista não está
-    ordenada, ou você ordena antes, ou usa busca linear.
+:::warning[A lista PRECISA estar ordenada]
+A busca binária só funciona em listas **ordenadas**. Se a sua lista não está
+ordenada, ou você ordena antes, ou usa busca linear.
+:::
 
 ## Complexidade (Big-O)
 
-!!! info "Tempo e espaço"
-    - **Busca binária:** tempo **O(log n)**, espaço **O(1)**.
-    - **Busca linear:** tempo **O(n)**.
+:::info[Tempo e espaço]
+- **Busca binária:** tempo **O(log n)**, espaço **O(1)**.
+- **Busca linear:** tempo **O(n)**.
 
-    `log₂ n` é o número de vezes que dá para dividir `n` por 2 até chegar a 1.
-    Para 1.024 itens são ~10 passos; para 1 bilhão, ~30. Veja o
-    [cheatsheet de Big-O](../referencia/big-o-cheatsheet.md).
+`log₂ n` é o número de vezes que dá para dividir `n` por 2 até chegar a 1.
+Para 1.024 itens são ~10 passos; para 1 bilhão, ~30. Veja o
+[cheatsheet de Big-O](../referencia/big-o-cheatsheet.md).
+:::
 
 ## Dúvidas comuns
 
-??? question "Por que `meio = (baixo + alto) // 2` usa `//`?"
-    `//` é divisão **inteira** em Python: índice de lista precisa ser inteiro.
-    `7 // 2 == 3`. Com `/` viria `3.5`, que não serve como índice.
+<details>
+<summary>Por que `meio = (baixo + alto) // 2` usa `//`?</summary>
 
-??? question "O que acontece se o item não estiver na lista?"
-    Os limites `baixo` e `alto` se aproximam até `baixo > alto`. O `while` para e
-    a função retorna `None`.
+`//` é divisão **inteira** em Python: índice de lista precisa ser inteiro.
+`7 // 2 == 3`. Com `/` viria `3.5`, que não serve como índice.
 
-??? question "Por que O(log n) é tão melhor que O(n)?"
-    Porque dobrar a entrada adiciona apenas **um** passo na busca binária, mas
-    **dobra** o trabalho da busca linear. A diferença explode com `n` grande.
+</details>
+
+<details>
+<summary>O que acontece se o item não estiver na lista?</summary>
+
+Os limites `baixo` e `alto` se aproximam até `baixo > alto`. O `while` para e
+a função retorna `None`.
+
+</details>
+
+<details>
+<summary>Por que O(log n) é tão melhor que O(n)?</summary>
+
+Porque dobrar a entrada adiciona apenas **um** passo na busca binária, mas
+**dobra** o trabalho da busca linear. A diferença explode com `n` grande.
+
+</details>
 
 ## Exercícios
 
-??? success "1.1 — Lista de 128 nomes: quantos passos no máximo?"
-    `log₂ 128 = 7`. No máximo **7 passos**.
+<details>
+<summary>1.1 — Lista de 128 nomes: quantos passos no máximo?</summary>
 
-??? success "1.2 — E se a lista dobrar para 256 nomes?"
-    `log₂ 256 = 8`. Apenas **8 passos** — só +1 ao dobrar a lista.
+`log₂ 128 = 7`. No máximo **7 passos**.
 
-??? success "1.3 — Big-O da busca linear no pior caso?"
-    **O(n)** — pode ser preciso olhar todos os `n` elementos.
+</details>
+
+<details>
+<summary>1.2 — E se a lista dobrar para 256 nomes?</summary>
+
+`log₂ 256 = 8`. Apenas **8 passos** — só +1 ao dobrar a lista.
+
+</details>
+
+<details>
+<summary>1.3 — Big-O da busca linear no pior caso?</summary>
+
+**O(n)** — pode ser preciso olhar todos os `n` elementos.
+
+</details>
 
 ## Checklist de domínio
 

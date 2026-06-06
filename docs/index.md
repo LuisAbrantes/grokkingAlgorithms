@@ -1,3 +1,8 @@
+---
+slug: /
+sidebar_position: 0
+---
+
 # Grokking Algorithms — Guia de Estudos 📘
 
 Bem-vindo ao seu site de estudos do livro **Grokking Algorithms: An Illustrated
@@ -7,10 +12,11 @@ Este site é um **resumo navegável e pesquisável** em português: um lugar par
 revisar conceitos, conferir complexidades, praticar exercícios e **tirar dúvidas**
 sem precisar reabrir o livro a cada vez.
 
-!!! tip "Como tirar dúvidas rápido"
-    Use a **busca** no topo da página (ícone 🔍). Ela indexa todo o conteúdo:
-    conceitos, "dúvidas comuns", exercícios e glossário. Procure por termos como
-    `pivô`, `memoização`, `fila`, `O(log n)`...
+:::tip[Como tirar dúvidas rápido]
+Use a **busca** no topo da página (ícone 🔍). Ela indexa todo o conteúdo:
+conceitos, "dúvidas comuns", exercícios e glossário. Procure por termos como
+`pivô`, `memoização`, `fila`, `O(log n)`...
+:::
 
 ## O que é o livro?
 
@@ -50,11 +56,12 @@ Para cada capítulo, siga este ciclo (comprovadamente eficaz para fixar):
 6. **Marque** o "Checklist de domínio" do capítulo. Só avance quando todos os
    itens estiverem marcados.
 
-!!! note "Material complementar"
-    - [Guia de estudos](guia-de-estudos.md) — cronograma e técnicas de aprendizado.
-    - [Cheatsheet de Big-O](referencia/big-o-cheatsheet.md) — todas as complexidades num lugar.
-    - [Glossário PT/EN](referencia/glossario.md) — termos traduzidos.
-    - [FAQ / Tirar dúvidas](faq-duvidas.md) — perguntas frequentes de todos os capítulos.
+:::note[Material complementar]
+- [Guia de estudos](guia-de-estudos.md) — cronograma e técnicas de aprendizado.
+- [Cheatsheet de Big-O](referencia/big-o-cheatsheet.md) — todas as complexidades num lugar.
+- [Glossário PT/EN](referencia/glossario.md) — termos traduzidos.
+- [FAQ / Tirar dúvidas](faq-duvidas.md) — perguntas frequentes de todos os capítulos.
+:::
 
 ## Onde está o código
 

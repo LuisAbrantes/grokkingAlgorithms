@@ -8,10 +8,11 @@ num índice de um array. Em Python, a tabela hash é o tipo `dict`.
 
 ## Analogia
 
-!!! note "Analogia: a atendente que sabe tudo de cor"
-    Numa lanchonete, em vez de procurar o preço numa lista, você pergunta à
-    atendente e ela responde na hora. A função hash é a "memória" dela: dada a
-    chave (nome do item), ela vai direto ao valor (preço), sem procurar.
+:::note[Analogia: a atendente que sabe tudo de cor]
+Numa lanchonete, em vez de procurar o preço numa lista, você pergunta à
+atendente e ela responde na hora. A função hash é a "memória" dela: dada a
+chave (nome do item), ela vai direto ao valor (preço), sem procurar.
+:::
 
 ## Como funciona
 
@@ -31,9 +32,10 @@ guardar uma **lista ligada** em cada slot. Se uma lista crescer muito, a busca
 piora para O(n) — por isso uma boa função hash e um **fator de carga** baixo
 importam.
 
-!!! tip "Fator de carga"
-    `fator de carga = itens / slots`. Acima de ~0,7, é hora de **redimensionar**
-    (criar um array maior e reinserir). Isso mantém as buscas em O(1) médio.
+:::tip[Fator de carga]
+`fator de carga = itens / slots`. Acima de ~0,7, é hora de **redimensionar**
+(criar um array maior e reinserir). Isso mantém as buscas em O(1) médio.
+:::
 
 ## Implementação em Python
 
@@ -60,68 +62,97 @@ def checar_eleitor(nome):
         print("deixa votar!")
 ```
 
-??? note "Versão didática: tabela hash 'na mão' (para entender o interior)"
-    ```python
-    class TabelaHash:
-        def __init__(self, tamanho=8):
-            self.slots = [[] for _ in range(tamanho)]  # encadeamento
+<details>
+<summary>Versão didática: tabela hash 'na mão' (para entender o interior)</summary>
 
-        def _indice(self, chave):
-            return hash(chave) % len(self.slots)
+```python
+class TabelaHash:
+    def __init__(self, tamanho=8):
+        self.slots = [[] for _ in range(tamanho)]  # encadeamento
 
-        def inserir(self, chave, valor):
-            slot = self.slots[self._indice(chave)]
-            for par in slot:
-                if par[0] == chave:        # atualiza se já existe
-                    par[1] = valor
-                    return
-            slot.append([chave, valor])    # senão, adiciona
+    def _indice(self, chave):
+        return hash(chave) % len(self.slots)
 
-        def buscar(self, chave):
-            slot = self.slots[self._indice(chave)]
-            for c, v in slot:
-                if c == chave:
-                    return v
-            return None
-    ```
+    def inserir(self, chave, valor):
+        slot = self.slots[self._indice(chave)]
+        for par in slot:
+            if par[0] == chave:        # atualiza se já existe
+                par[1] = valor
+                return
+        slot.append([chave, valor])    # senão, adiciona
+
+    def buscar(self, chave):
+        slot = self.slots[self._indice(chave)]
+        for c, v in slot:
+            if c == chave:
+                return v
+        return None
+```
+
+</details>
 
 ## Complexidade (Big-O)
 
-!!! info "Tempo"
-    | Operação | Caso médio | Pior caso |
-    |----------|-----------|-----------|
-    | Busca | **O(1)** | O(n) |
-    | Inserção | **O(1)** | O(n) |
-    | Remoção | **O(1)** | O(n) |
+:::info[Tempo]
+| Operação | Caso médio | Pior caso |
+|----------|-----------|-----------|
+| Busca | **O(1)** | O(n) |
+| Inserção | **O(1)** | O(n) |
+| Remoção | **O(1)** | O(n) |
 
-    O pior caso (O(n)) acontece com muitas colisões. Com boa função hash e fator
-    de carga baixo, fica O(1) na prática.
+O pior caso (O(n)) acontece com muitas colisões. Com boa função hash e fator
+de carga baixo, fica O(1) na prática.
+:::
 
 ## Dúvidas comuns
 
-??? question "Quando usar tabela hash em vez de lista?"
-    Quando você faz muitas **buscas por chave** (não por posição): índices,
-    contagens, caches, evitar duplicatas. É O(1) vs. O(n) da busca em lista.
+<details>
+<summary>Quando usar tabela hash em vez de lista?</summary>
 
-??? question "O que é uma colisão e por que ela importa?"
-    É quando duas chaves recebem o mesmo índice. Muitas colisões transformam a
-    busca em O(n). Por isso a função hash deve distribuir bem as chaves.
+Quando você faz muitas **buscas por chave** (não por posição): índices,
+contagens, caches, evitar duplicatas. É O(1) vs. O(n) da busca em lista.
 
-??? question "Por que dicionários em Python são tão rápidos?"
-    Porque `dict` é uma tabela hash bem otimizada: a maioria das operações é O(1).
+</details>
+
+<details>
+<summary>O que é uma colisão e por que ela importa?</summary>
+
+É quando duas chaves recebem o mesmo índice. Muitas colisões transformam a
+busca em O(n). Por isso a função hash deve distribuir bem as chaves.
+
+</details>
+
+<details>
+<summary>Por que dicionários em Python são tão rápidos?</summary>
+
+Porque `dict` é uma tabela hash bem otimizada: a maioria das operações é O(1).
+
+</details>
 
 ## Exercícios
 
-??? success "5.1 — Cite 3 bons usos de tabela hash."
-    Cache (memorizar respostas), evitar duplicatas (lista de quem já votou),
-    índice/lookup rápido (preços por produto).
+<details>
+<summary>5.1 — Cite 3 bons usos de tabela hash.</summary>
 
-??? success "5.2 — O que mantém as operações em O(1)?"
-    Uma boa função hash (poucas colisões) e fator de carga baixo (redimensionar
-    quando necessário).
+Cache (memorizar respostas), evitar duplicatas (lista de quem já votou),
+índice/lookup rápido (preços por produto).
 
-??? success "5.3 — Big-O de busca numa tabela hash no pior caso?"
-    **O(n)** — quando tudo colide no mesmo slot.
+</details>
+
+<details>
+<summary>5.2 — O que mantém as operações em O(1)?</summary>
+
+Uma boa função hash (poucas colisões) e fator de carga baixo (redimensionar
+quando necessário).
+
+</details>
+
+<details>
+<summary>5.3 — Big-O de busca numa tabela hash no pior caso?</summary>
+
+**O(n)** — quando tudo colide no mesmo slot.
+
+</details>
 
 ## Checklist de domínio
 

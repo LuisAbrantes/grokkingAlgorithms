@@ -1,17 +1,27 @@
-# Saída do build do MkDocs
-site/
+# Dependências
+/node_modules
 
-# Ambiente virtual Python
-.venv/
-venv/
-env/
+# Produção (build do Docusaurus)
+/build
 
-# Cache do Python
+# Arquivos gerados
+.docusaurus
+.cache-loader
+
+# Python (código dos exercícios do livro)
 __pycache__/
 *.py[cod]
 *$py.class
+.venv/
+venv/
+env/
 
 # Sistema operacional / editores
 .DS_Store
 .idea/
 .vscode/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
