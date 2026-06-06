@@ -2,73 +2,58 @@
 
 Este repositório contém minhas implementações em Python dos exemplos do livro
 **Grokking Algorithms** (Aditya Bhargava) e um **site de estudos em português**
-para revisar conceitos, ver complexidades, praticar exercícios e tirar dúvidas.
+(feito em **Docusaurus / TypeScript**) para revisar conceitos, ver complexidades,
+praticar exercícios e tirar dúvidas.
 
 ## 📁 Estrutura
 
 ```
 .
 ├── chapter01/ … chapter04/   # código Python dos capítulos (acompanhando o livro)
-├── docs/                     # conteúdo do site de estudos (Markdown)
-├── mkdocs.yml                # configuração do site (MkDocs Material)
-└── requirements.txt          # dependências do site
+├── docs/                     # conteúdo do site de estudos (Markdown/MDX)
+├── src/                      # CSS e customizações do site
+├── static/                   # imagens e assets estáticos
+├── docusaurus.config.ts      # configuração do site
+├── sidebars.ts               # navegação lateral
+└── package.json              # dependências (Docusaurus, busca, mermaid)
 ```
 
-## 🚀 Rodar o site de estudos localmente
+## 🚀 Rodar o site localmente
 
 ```bash
-# 1. Criar e ativar um ambiente virtual (recomendado)
-python3 -m venv .venv
-source .venv/bin/activate         # Windows: .venv\Scripts\activate
-
-# 2. Instalar as dependências
-pip install -r requirements.txt
-
-# 3. Subir o site com hot-reload
-mkdocs serve
+npm install
+npm start            # abre em http://localhost:3000 com hot-reload
 ```
 
-Abra **http://localhost:8000** no navegador. A busca no topo da página indexa
-todo o conteúdo (conceitos, dúvidas, exercícios).
+Outros comandos úteis:
+
+```bash
+npm run build        # gera o site estático em build/
+npm run serve        # serve o build/ localmente para conferir
+npm run typecheck    # checagem de tipos TypeScript
+```
+
+A **busca** no topo da página (offline, em português) indexa todo o conteúdo —
+conceitos, dúvidas e exercícios.
 
 ## ▲ Publicar na Vercel
 
-> O site é **estático**: o Python (MkDocs) roda só no *build* e gera HTML/CSS/JS.
-> Nenhum Python roda quando alguém visita o site — é 100% front-end, igual a um
-> projeto Next/Vite, só que o gerador é Python e o conteúdo é Markdown.
+O projeto é **Docusaurus padrão**, então a Vercel o detecta automaticamente —
+não precisa de configuração especial:
 
-O `vercel.json` já está configurado:
-
-```json
-{
-  "installCommand": "pip3 install -r requirements.txt",
-  "buildCommand": "python3 -m mkdocs build",
-  "outputDirectory": "site"
-}
-```
-
-Passos no painel da Vercel:
-
-1. Acesse [vercel.com/new](https://vercel.com/new) e importe o repositório
+1. Acesse [vercel.com/new](https://vercel.com/new) e importe
    `LuisAbrantes/grokkingAlgorithms`.
-2. **Framework Preset:** deixe em **Other** (o `vercel.json` cuida do resto).
-3. Clique em **Deploy**. A cada `git push` na `main`, a Vercel rebuilda e republica.
+2. **Framework Preset:** a Vercel detecta **Docusaurus** sozinha
+   (Build Command `npm run build`, Output `build`).
+3. Clique em **Deploy**. A cada `git push` na `main`, a Vercel republica.
 
-> Alternativa via CLI: `npm i -g vercel && vercel` (na raiz do projeto).
-
-## 📦 Publicar (alternativa) no GitHub Pages
-
-```bash
-mkdocs gh-deploy
-```
-
-O site fica disponível em `https://LuisAbrantes.github.io/grokkingAlgorithms/`.
+> Alternativa via CLI: `npm i -g vercel && vercel`.
 
 ## 📚 O que tem no site
 
-- Uma página por capítulo (1–12) com: ideia central, analogia, passo a passo,
-  implementação em Python, complexidade (Big-O), dúvidas comuns, exercícios
-  resolvidos e checklist de domínio.
+- Uma página por capítulo (1–12) com: ideia central, analogia, passo a passo
+  (com diagramas Mermaid), implementação em Python, complexidade (Big-O),
+  dúvidas comuns, exercícios resolvidos e checklist de domínio.
 - **Guia de estudos** com cronograma e técnicas de aprendizado.
 - **Referência**: cheatsheet de Big-O e glossário PT/EN.
-- **FAQ** central para tirar dúvidas.
+- **FAQ** central + busca para tirar dúvidas.

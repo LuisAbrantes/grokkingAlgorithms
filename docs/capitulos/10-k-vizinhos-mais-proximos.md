@@ -9,10 +9,11 @@ olhando os **K itens mais parecidos**. É um dos algoritmos mais simples de
 
 ## Analogia
 
-!!! note "Analogia: a fruta desconhecida"
-    Você tem uma fruta e quer saber se é laranja ou toranja. Olha as frutas mais
-    **parecidas** (tamanho, cor) que você já conhece. Se a maioria das `K` mais
-    próximas são laranjas, você chuta "laranja". É votação por semelhança.
+:::note[Analogia: a fruta desconhecida]
+Você tem uma fruta e quer saber se é laranja ou toranja. Olha as frutas mais
+**parecidas** (tamanho, cor) que você já conhece. Se a maioria das `K` mais
+próximas são laranjas, você chuta "laranja". É votação por semelhança.
+:::
 
 ## Como funciona
 
@@ -57,52 +58,82 @@ treino = [
 print(knn_classificar(treino, [6, 7], k=3))   # laranja
 ```
 
-??? note "Variante: regressão (prever um número)"
-    ```python
-    def knn_regressao(treino, novo, k=3):
-        vizinhos = sorted(treino, key=lambda item: distancia(item[0], novo))
-        valores = [valor for _, valor in vizinhos[:k]]
-        return sum(valores) / len(valores)   # média dos K vizinhos
-    ```
-    Útil para prever, por exemplo, quantas unidades um produto vai vender com base
-    em produtos parecidos.
+<details>
+<summary>Variante: regressão (prever um número)</summary>
+
+```python
+def knn_regressao(treino, novo, k=3):
+    vizinhos = sorted(treino, key=lambda item: distancia(item[0], novo))
+    valores = [valor for _, valor in vizinhos[:k]]
+    return sum(valores) / len(valores)   # média dos K vizinhos
+```
+Útil para prever, por exemplo, quantas unidades um produto vai vender com base
+em produtos parecidos.
+
+</details>
 
 ## Escolhendo features e K
 
-!!! tip "As features são o que mais importa"
-    Boas características (relevantes e bem escaladas) valem mais que o algoritmo.
-    Normalize escalas diferentes (ex.: preço em milhares × nota de 0 a 5).
+:::tip[As features são o que mais importa]
+Boas características (relevantes e bem escaladas) valem mais que o algoritmo.
+Normalize escalas diferentes (ex.: preço em milhares × nota de 0 a 5).
+:::
 
-!!! info "Quanto vale K?"
-    Regra prática comum: **K ≈ √N** (N = número de exemplos). K pequeno é sensível
-    a ruído; K grande "borra" as fronteiras. Use número ímpar para evitar empates.
+:::info[Quanto vale K?]
+Regra prática comum: **K ≈ √N** (N = número de exemplos). K pequeno é sensível
+a ruído; K grande "borra" as fronteiras. Use número ímpar para evitar empates.
+:::
 
 ## Dúvidas comuns
 
-??? question "KNN serve para quê na prática?"
-    Sistemas de **recomendação** (itens/usuários parecidos), classificação simples
-    (spam/não-spam, OCR), e regressão (estimar valores por semelhança).
+<details>
+<summary>KNN serve para quê na prática?</summary>
 
-??? question "Classificação × regressão no KNN?"
-    Classificação devolve uma **categoria** (votação dos vizinhos). Regressão
-    devolve um **número** (média dos vizinhos).
+Sistemas de **recomendação** (itens/usuários parecidos), classificação simples
+(spam/não-spam, OCR), e regressão (estimar valores por semelhança).
 
-??? question "Por que normalizar as features?"
-    Porque features em escalas muito diferentes distorcem a distância — a de maior
-    magnitude domina. Normalizar coloca todas em pé de igualdade.
+</details>
+
+<details>
+<summary>Classificação × regressão no KNN?</summary>
+
+Classificação devolve uma **categoria** (votação dos vizinhos). Regressão
+devolve um **número** (média dos vizinhos).
+
+</details>
+
+<details>
+<summary>Por que normalizar as features?</summary>
+
+Porque features em escalas muito diferentes distorcem a distância — a de maior
+magnitude domina. Normalizar coloca todas em pé de igualdade.
+
+</details>
 
 ## Exercícios
 
-??? success "10.1 — KNN com K=1 é boa ideia?"
-    Geralmente não: fica muito sensível a ruído/outliers. K maior (ímpar) costuma
-    ser mais estável.
+<details>
+<summary>10.1 — KNN com K=1 é boa ideia?</summary>
 
-??? success "10.2 — Recomendar filmes é classificação ou regressão?"
-    Pode ser regressão (prever a **nota** que o usuário daria) usando vizinhos
-    parecidos.
+Geralmente não: fica muito sensível a ruído/outliers. K maior (ímpar) costuma
+ser mais estável.
 
-??? success "10.3 — O que mais influencia a qualidade do KNN?"
-    A escolha e a normalização das **features**.
+</details>
+
+<details>
+<summary>10.2 — Recomendar filmes é classificação ou regressão?</summary>
+
+Pode ser regressão (prever a **nota** que o usuário daria) usando vizinhos
+parecidos.
+
+</details>
+
+<details>
+<summary>10.3 — O que mais influencia a qualidade do KNN?</summary>
+
+A escolha e a normalização das **features**.
+
+</details>
 
 ## Checklist de domínio
 

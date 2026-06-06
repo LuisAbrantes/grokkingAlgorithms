@@ -16,10 +16,11 @@ constantes — o que importa é o formato do crescimento.
 | O(2ⁿ) | exponencial | tentar todos os subconjuntos | 10³⁰ |
 | O(n!) | fatorial | **caixeiro-viajante** (força bruta) | enorme |
 
-!!! tip "Intuição do log"
-    `O(log n)` aparece quando você **divide o problema pela metade** a cada passo
-    (busca binária). Dobrar a entrada custa só **+1** passo. É quase tão bom
-    quanto O(1).
+:::tip[Intuição do log]
+`O(log n)` aparece quando você **divide o problema pela metade** a cada passo
+(busca binária). Dobrar a entrada custa só **+1** passo. É quase tão bom
+quanto O(1).
+:::
 
 ## Crescimento visual
 
@@ -61,7 +62,8 @@ operações
 4. **Dividir pela metade a cada passo** → O(log n).
 5. **Recursão**: tempo ≈ (nº de chamadas) × (trabalho por chamada).
 
-!!! warning "Big-O não é tudo"
-    Para `n` pequeno, constantes importam. Um O(n²) simples pode ser mais rápido
-    que um O(n log n) cheio de sobrecarga para listas pequenas. Big-O descreve o
-    comportamento **quando `n` cresce**.
+:::warning[Big-O não é tudo]
+Para `n` pequeno, constantes importam. Um O(n²) simples pode ser mais rápido
+que um O(n log n) cheio de sobrecarga para listas pequenas. Big-O descreve o
+comportamento **quando `n` cresce**.
+:::
