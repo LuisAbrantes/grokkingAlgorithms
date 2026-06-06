@@ -8,10 +8,11 @@ acha o caminho de **menor custo** num grafo **ponderado** (arestas com pesos).
 
 ## Analogia
 
-!!! note "Analogia: trocar caminhos por dinheiro/tempo"
-    Indo do ponto A ao B, cada trecho tem um custo (minutos, R$, km). O caminho com
-    **menos trechos** pode não ser o **mais barato**. Dijkstra soma os custos e
-    escolhe a rota de menor custo total.
+:::note[Analogia: trocar caminhos por dinheiro/tempo]
+Indo do ponto A ao B, cada trecho tem um custo (minutos, R$, km). O caminho com
+**menos trechos** pode não ser o **mais barato**. Dijkstra soma os custos e
+escolhe a rota de menor custo total.
+:::
 
 ## Como funciona
 
@@ -75,41 +76,67 @@ while no is not None:
 print(custos["fim"])   # 6
 ```
 
-!!! tip "Versão eficiente: use uma fila de prioridade"
-    `no_de_menor_custo` varre tudo (O(V) por passo). Com um **heap**
-    (`heapq`/fila de prioridade), Dijkstra fica **O(A log V)**.
+:::tip[Versão eficiente: use uma fila de prioridade]
+`no_de_menor_custo` varre tudo (O(V) por passo). Com um **heap**
+(`heapq`/fila de prioridade), Dijkstra fica **O(A log V)**.
+:::
 
 ## Complexidade (Big-O)
 
-!!! info "Tempo"
-    - **Com fila de prioridade (heap): O(A log V)**.
-    - **Versão simples (varrendo custos): O(V²)**.
+:::info[Tempo]
+- **Com fila de prioridade (heap): O(A log V)**.
+- **Versão simples (varrendo custos): O(V²)**.
+:::
 
 ## Dúvidas comuns
 
-??? question "Dijkstra funciona com pesos negativos?"
-    **Não.** Com arestas negativas, use **Bellman-Ford**. Dijkstra assume que
-    nenhum caminho fica mais barato ao adicionar arestas.
+<details>
+<summary>Dijkstra funciona com pesos negativos?</summary>
 
-??? question "Qual a diferença entre BFS e Dijkstra?"
-    BFS: menor **número de arestas** (grafo sem peso). Dijkstra: menor **custo
-    total** (grafo com peso). Se todos os pesos são iguais, BFS já resolve.
+**Não.** Com arestas negativas, use **Bellman-Ford**. Dijkstra assume que
+nenhum caminho fica mais barato ao adicionar arestas.
 
-??? question "Para que serve a tabela de 'pais'?"
-    Para **reconstruir o caminho**: começando do fim e seguindo os pais até o
-    início, você descobre a rota, não só o custo.
+</details>
+
+<details>
+<summary>Qual a diferença entre BFS e Dijkstra?</summary>
+
+BFS: menor **número de arestas** (grafo sem peso). Dijkstra: menor **custo
+total** (grafo com peso). Se todos os pesos são iguais, BFS já resolve.
+
+</details>
+
+<details>
+<summary>Para que serve a tabela de 'pais'?</summary>
+
+Para **reconstruir o caminho**: começando do fim e seguindo os pais até o
+início, você descobre a rota, não só o custo.
+
+</details>
 
 ## Exercícios
 
-??? success "7.1 — Dijkstra ou BFS para um mapa de estradas com distâncias?"
-    **Dijkstra** — há pesos (distâncias).
+<details>
+<summary>7.1 — Dijkstra ou BFS para um mapa de estradas com distâncias?</summary>
 
-??? success "7.2 — Por que Dijkstra falha com pesos negativos?"
-    Porque ele "fecha" um nó assumindo que seu custo não vai mais diminuir — o que
-    deixa de valer com arestas negativas.
+**Dijkstra** — há pesos (distâncias).
 
-??? success "7.3 — Como recuperar o caminho, não só o custo?"
-    Seguindo a tabela de **pais** do fim ao início e invertendo a sequência.
+</details>
+
+<details>
+<summary>7.2 — Por que Dijkstra falha com pesos negativos?</summary>
+
+Porque ele "fecha" um nó assumindo que seu custo não vai mais diminuir — o que
+deixa de valer com arestas negativas.
+
+</details>
+
+<details>
+<summary>7.3 — Como recuperar o caminho, não só o custo?</summary>
+
+Seguindo a tabela de **pais** do fim ao início e invertendo a sequência.
+
+</details>
 
 ## Checklist de domínio
 

@@ -9,11 +9,12 @@ chamar a si mesma de novo). O capítulo também mostra a **pilha de chamadas**
 
 ## Analogia
 
-!!! note "Analogia: a caixa com a chave"
-    Você procura uma chave numa caixa que contém outras caixas, que contêm outras
-    caixas... A versão **iterativa** usa uma pilha de caixas a abrir. A versão
-    **recursiva** diz: "para cada item da caixa: se for uma caixa, procure dentro
-    dela (recursão!); se for a chave, achei". Mais limpa de ler.
+:::note[Analogia: a caixa com a chave]
+Você procura uma chave numa caixa que contém outras caixas, que contêm outras
+caixas... A versão **iterativa** usa uma pilha de caixas a abrir. A versão
+**recursiva** diz: "para cada item da caixa: se for uma caixa, procure dentro
+dela (recursão!); se for a chave, achei". Mais limpa de ler.
+:::
 
 ## Caso-base e caso-recursivo
 
@@ -78,9 +79,10 @@ flowchart TD
     D --> E["fat(3) = 3 * 2 = 6"]
 ```
 
-!!! warning "A pilha tem limite"
-    Cada chamada recursiva consome memória na pilha. Recursão muito profunda gera
-    `RecursionError` (estouro de pilha). Para esses casos, prefira um loop.
+:::warning[A pilha tem limite]
+Cada chamada recursiva consome memória na pilha. Recursão muito profunda gera
+`RecursionError` (estouro de pilha). Para esses casos, prefira um loop.
+:::
 
 ## A caixa com a chave (iterativo × recursivo)
 
@@ -95,42 +97,67 @@ def procurePelaChave(caixa):
 
 ## Complexidade (Big-O)
 
-!!! info "Recursão e custo"
-    Recursão não é, por si, mais rápida ou mais lenta que um loop. O Big-O depende
-    de **quantas chamadas** acontecem × **o trabalho por chamada**. A recursão
-    usa **espaço O(profundidade)** na pilha de chamadas.
+:::info[Recursão e custo]
+Recursão não é, por si, mais rápida ou mais lenta que um loop. O Big-O depende
+de **quantas chamadas** acontecem × **o trabalho por chamada**. A recursão
+usa **espaço O(profundidade)** na pilha de chamadas.
+:::
 
 ## Dúvidas comuns
 
-??? question "Recursão é mais rápida que loop?"
-    Não necessariamente. Costuma ser mais **legível**, mas usa memória na pilha.
-    Para problemas "auto-similares" (caixas, árvores, dividir-para-conquistar) ela
-    brilha. Veja o [FAQ](../faq-duvidas.md).
+<details>
+<summary>Recursão é mais rápida que loop?</summary>
 
-??? question "O que é `RecursionError`?"
-    É o erro que o Python lança quando a recursão fica profunda demais (sem
-    caso-base, ou com profundidade gigante) e a pilha de chamadas estoura.
+Não necessariamente. Costuma ser mais **legível**, mas usa memória na pilha.
+Para problemas "auto-similares" (caixas, árvores, dividir-para-conquistar) ela
+brilha. Veja o [FAQ](../faq-duvidas.md).
 
-??? question "Toda recursão tem solução iterativa?"
-    Sim. Recursão e iteração têm o mesmo poder. A escolha é de clareza e de uso de
-    memória.
+</details>
+
+<details>
+<summary>O que é `RecursionError`?</summary>
+
+É o erro que o Python lança quando a recursão fica profunda demais (sem
+caso-base, ou com profundidade gigante) e a pilha de chamadas estoura.
+
+</details>
+
+<details>
+<summary>Toda recursão tem solução iterativa?</summary>
+
+Sim. Recursão e iteração têm o mesmo poder. A escolha é de clareza e de uso de
+memória.
+
+</details>
 
 ## Exercícios
 
-??? success "3.1 — O que falta na função `regressiva` infinita?"
-    Um **caso-base**: `if i <= 1: return`.
+<details>
+<summary>3.1 — O que falta na função `regressiva` infinita?</summary>
 
-??? success "3.2 — Escreva `soma(lista)` recursiva."
-    ```python
-    def soma(lista):
-        if not lista:          # caso-base: lista vazia
-            return 0
-        return lista[0] + soma(lista[1:])
-    ```
-    (Você verá exatamente isso no [cap. 4](04-quicksort.md).)
+Um **caso-base**: `if i <= 1: return`.
 
-??? success "3.3 — Quantos quadros na pilha em `fat(5)` no ponto mais fundo?"
-    5: `fat(5)`, `fat(4)`, `fat(3)`, `fat(2)`, `fat(1)`.
+</details>
+
+<details>
+<summary>3.2 — Escreva `soma(lista)` recursiva.</summary>
+
+```python
+def soma(lista):
+    if not lista:          # caso-base: lista vazia
+        return 0
+    return lista[0] + soma(lista[1:])
+```
+(Você verá exatamente isso no [cap. 4](04-quicksort.md).)
+
+</details>
+
+<details>
+<summary>3.3 — Quantos quadros na pilha em `fat(5)` no ponto mais fundo?</summary>
+
+5: `fat(5)`, `fat(4)`, `fat(3)`, `fat(2)`, `fat(1)`.
+
+</details>
 
 ## Checklist de domínio
 

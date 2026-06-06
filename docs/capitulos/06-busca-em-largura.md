@@ -9,11 +9,12 @@ grafo por **camadas**, usando uma **fila**.
 
 ## Analogia
 
-!!! note "Analogia: procurar um vendedor de mangas na sua rede"
-    Você quer achar um vendedor de mangas entre seus conhecidos. Primeiro pergunta
-    aos **amigos diretos** (1º grau). Se ninguém for, pergunta aos **amigos dos
-    amigos** (2º grau), e assim por diante. Você sempre checa os mais próximos
-    primeiro — por isso encontra o caminho **mais curto**.
+:::note[Analogia: procurar um vendedor de mangas na sua rede]
+Você quer achar um vendedor de mangas entre seus conhecidos. Primeiro pergunta
+aos **amigos diretos** (1º grau). Se ninguém for, pergunta aos **amigos dos
+amigos** (2º grau), e assim por diante. Você sempre checa os mais próximos
+primeiro — por isso encontra o caminho **mais curto**.
+:::
 
 ## Como funciona
 
@@ -31,10 +32,11 @@ flowchart TD
     claire --> thom & jonny
 ```
 
-!!! warning "Use FILA, não pilha"
-    A BFS precisa de uma **fila** (FIFO): checar primeiro quem entrou primeiro
-    garante explorar por camadas e achar o caminho mais curto. Uma pilha (LIFO)
-    daria uma busca em profundidade (DFS), que **não** garante o caminho mais curto.
+:::warning[Use FILA, não pilha]
+A BFS precisa de uma **fila** (FIFO): checar primeiro quem entrou primeiro
+garante explorar por camadas e achar o caminho mais curto. Uma pilha (LIFO)
+daria uma busca em profundidade (DFS), que **não** garante o caminho mais curto.
+:::
 
 ## Implementação em Python
 
@@ -76,35 +78,60 @@ busca("voce")   # thom é um vendedor de mangas!
 
 ## Complexidade (Big-O)
 
-!!! info "Tempo e espaço"
-    - **Tempo: O(V + A)** — no pior caso você visita todos os vértices (`V`) e
-      percorre todas as arestas (`A`).
-    - **Espaço: O(V)** — a fila e o conjunto de checados.
+:::info[Tempo e espaço]
+- **Tempo: O(V + A)** — no pior caso você visita todos os vértices (`V`) e
+  percorre todas as arestas (`A`).
+- **Espaço: O(V)** — a fila e o conjunto de checados.
+:::
 
 ## Dúvidas comuns
 
-??? question "Por que marcar quem já foi checado?"
-    Sem isso, você pode ficar em **loop infinito** (A é amigo de B, B é amigo de A)
-    e reprocessar pessoas, perdendo tempo.
+<details>
+<summary>Por que marcar quem já foi checado?</summary>
 
-??? question "BFS acha sempre o caminho mais curto?"
-    Sim, em grafos **sem peso** (ou com pesos iguais). Para arestas com pesos
-    diferentes, use [Dijkstra (cap. 7)](07-dijkstra.md).
+Sem isso, você pode ficar em **loop infinito** (A é amigo de B, B é amigo de A)
+e reprocessar pessoas, perdendo tempo.
 
-??? question "Por que `deque` e não `list` para a fila?"
-    `deque.popleft()` é O(1); `list.pop(0)` é O(n) (precisa deslocar tudo). Para
-    uma fila, `deque` é o certo.
+</details>
+
+<details>
+<summary>BFS acha sempre o caminho mais curto?</summary>
+
+Sim, em grafos **sem peso** (ou com pesos iguais). Para arestas com pesos
+diferentes, use [Dijkstra (cap. 7)](07-dijkstra.md).
+
+</details>
+
+<details>
+<summary>Por que `deque` e não `list` para a fila?</summary>
+
+`deque.popleft()` é O(1); `list.pop(0)` é O(n) (precisa deslocar tudo). Para
+uma fila, `deque` é o certo.
+
+</details>
 
 ## Exercícios
 
-??? success "6.1 — BFS ou DFS para achar o caminho mais curto (sem pesos)?"
-    **BFS** — ela explora por camadas.
+<details>
+<summary>6.1 — BFS ou DFS para achar o caminho mais curto (sem pesos)?</summary>
 
-??? success "6.2 — Qual estrutura a BFS usa e por quê?"
-    Uma **fila** (FIFO), para checar primeiro os nós mais próximos do início.
+**BFS** — ela explora por camadas.
 
-??? success "6.3 — Big-O da BFS?"
-    **O(V + A)** — vértices mais arestas.
+</details>
+
+<details>
+<summary>6.2 — Qual estrutura a BFS usa e por quê?</summary>
+
+Uma **fila** (FIFO), para checar primeiro os nós mais próximos do início.
+
+</details>
+
+<details>
+<summary>6.3 — Big-O da BFS?</summary>
+
+**O(V + A)** — vértices mais arestas.
+
+</details>
 
 ## Checklist de domínio
 

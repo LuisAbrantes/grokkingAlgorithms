@@ -22,9 +22,10 @@ O ritmo abaixo é um ponto de partida — ajuste à sua rotina. O importante é 
 | 11 | Cap. 11 — Grafos | Árvore geradora mínima; ordenação topológica |
 | 12 | Cap. 12 — Próximos passos | Mapear o que estudar a seguir |
 
-!!! tip "Revisão espaçada"
-    No fim de cada semana, releia rapidamente os **checklists** dos capítulos
-    anteriores. Reveja com mais força o que você não conseguir explicar de cabeça.
+:::tip[Revisão espaçada]
+No fim de cada semana, releia rapidamente os **checklists** dos capítulos
+anteriores. Reveja com mais força o que você não conseguir explicar de cabeça.
+:::
 
 ## Como estudar cada capítulo
 
@@ -65,6 +66,7 @@ Os checklists usam caixas de seleção. Para registrar de verdade o que já domi
 você pode marcar `- [x]` direto no arquivo `.md` do capítulo e commitar — assim
 seu progresso fica versionado no Git.
 
-!!! note "Onde você está agora"
-    Pelas pastas do repositório, você já implementou os capítulos **1 a 4**.
-    Os próximos a atacar são **Tabelas hash (5)** e **BFS (6)**.
+:::note[Onde você está agora]
+Pelas pastas do repositório, você já implementou os capítulos **1 a 4**.
+Os próximos a atacar são **Tabelas hash (5)** e **BFS (6)**.
+:::

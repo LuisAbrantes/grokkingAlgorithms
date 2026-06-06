@@ -9,10 +9,11 @@ rápida construída sobre D&C e recursão.
 
 ## Analogia
 
-!!! note "Analogia: dividir o terreno em quadrados"
-    Para dividir um terreno retangular nos maiores quadrados iguais possíveis, você
-    acha o maior quadrado que cabe, e repete o D&C no pedaço que sobra. Sempre o
-    **mesmo problema, menor**, até acabar.
+:::note[Analogia: dividir o terreno em quadrados]
+Para dividir um terreno retangular nos maiores quadrados iguais possíveis, você
+acha o maior quadrado que cabe, e repete o D&C no pedaço que sobra. Sempre o
+**mesmo problema, menor**, até acabar.
+:::
 
 ## Dividir para conquistar (D&C)
 
@@ -45,10 +46,11 @@ def maximo(lista):
     return lista[0] if lista[0] > subMax else subMax
 ```
 
-!!! warning "Cuidado com o caso-base"
-    Uma armadilha comum é escrever `if lista == 0` em vez de `if not lista`
-    (lista vazia). `lista == 0` nunca é verdade para uma lista, então a recursão
-    não para. Sempre teste o caso-base com **lista vazia** e **um elemento**.
+:::warning[Cuidado com o caso-base]
+Uma armadilha comum é escrever `if lista == 0` em vez de `if not lista`
+(lista vazia). `lista == 0` nunca é verdade para uma lista, então a recursão
+não para. Sempre teste o caso-base com **lista vazia** e **um elemento**.
+:::
 
 ## Como funciona o quicksort
 
@@ -86,58 +88,88 @@ print(quicksort([9, 83, 2, 31, 10, 8]))
 # [2, 8, 9, 10, 31, 83]
 ```
 
-!!! note "E os elementos iguais ao pivô?"
-    Esta versão usa `<` e `>`, então valores **iguais** ao pivô (exceto o próprio)
-    seriam descartados. Para listas com repetidos, use `<=`/`>=` em um dos lados,
-    ou separe em três grupos (`menores`, `iguais`, `maiores`).
+:::note[E os elementos iguais ao pivô?]
+Esta versão usa `<` e `>`, então valores **iguais** ao pivô (exceto o próprio)
+seriam descartados. Para listas com repetidos, use `<=`/`>=` em um dos lados,
+ou separe em três grupos (`menores`, `iguais`, `maiores`).
+:::
 
 ## Complexidade (Big-O)
 
-!!! info "Depende do pivô"
-    - **Caso médio: O(n log n)** — pivô divide a lista em metades equilibradas.
-    - **Pior caso: O(n²)** — pivô sempre o menor/maior (ex.: lista já ordenada com
-      pivô na ponta). Partições ficam totalmente desbalanceadas.
-    - **Espaço: O(log n)** (pilha de recursão, no caso médio).
+:::info[Depende do pivô]
+- **Caso médio: O(n log n)** — pivô divide a lista em metades equilibradas.
+- **Pior caso: O(n²)** — pivô sempre o menor/maior (ex.: lista já ordenada com
+  pivô na ponta). Partições ficam totalmente desbalanceadas.
+- **Espaço: O(log n)** (pilha de recursão, no caso médio).
 
-    Dica prática: escolher um **pivô aleatório** torna o pior caso muito
-    improvável. Veja o [cheatsheet](../referencia/big-o-cheatsheet.md).
+Dica prática: escolher um **pivô aleatório** torna o pior caso muito
+improvável. Veja o [cheatsheet](../referencia/big-o-cheatsheet.md).
+:::
 
 ## Dúvidas comuns
 
-??? question "Por que o caso médio é O(n log n)?"
-    Cada nível de recursão processa todos os `n` elementos (particionar é O(n)), e
-    há ~`log n` níveis quando as partições são equilibradas. n × log n = O(n log n).
+<details>
+<summary>Por que o caso médio é O(n log n)?</summary>
 
-??? question "Quando o quicksort vira O(n²)?"
-    Quando o pivô é sempre o menor (ou maior) elemento — aí uma partição fica vazia
-    e a outra com quase tudo, gerando `n` níveis em vez de `log n`.
+Cada nível de recursão processa todos os `n` elementos (particionar é O(n)), e
+há ~`log n` níveis quando as partições são equilibradas. n × log n = O(n log n).
 
-??? question "Quicksort × selection sort: qual a diferença prática?"
-    Selection sort é sempre O(n²); quicksort é O(n log n) no caso médio. Para
-    `n = 1000`, ~1 milhão vs. ~10 mil operações.
+</details>
 
-??? question "Por que `len(array) < 2` é o caso-base?"
-    Listas com 0 ou 1 elemento já estão ordenadas — não há o que fazer. É a
-    condição que para a recursão.
+<details>
+<summary>Quando o quicksort vira O(n²)?</summary>
+
+Quando o pivô é sempre o menor (ou maior) elemento — aí uma partição fica vazia
+e a outra com quase tudo, gerando `n` níveis em vez de `log n`.
+
+</details>
+
+<details>
+<summary>Quicksort × selection sort: qual a diferença prática?</summary>
+
+Selection sort é sempre O(n²); quicksort é O(n log n) no caso médio. Para
+`n = 1000`, ~1 milhão vs. ~10 mil operações.
+
+</details>
+
+<details>
+<summary>Por que `len(array) < 2` é o caso-base?</summary>
+
+Listas com 0 ou 1 elemento já estão ordenadas — não há o que fazer. É a
+condição que para a recursão.
+
+</details>
 
 ## Exercícios
 
-??? success "4.1 — Big-O para imprimir cada elemento de uma lista?"
-    **O(n)** — um por um.
+<details>
+<summary>4.1 — Big-O para imprimir cada elemento de uma lista?</summary>
 
-??? success "4.2 — Big-O do quicksort no melhor/caso médio e no pior?"
-    Médio: **O(n log n)**. Pior: **O(n²)**.
+**O(n)** — um por um.
 
-??? success "4.3 — Reescreva `maximo` com caso-base de lista vazia/1 elemento."
-    ```python
-    def maximo(lista):
-        if not lista:
-            return None
-        if len(lista) == 1:
-            return lista[0]
-        subMax = maximo(lista[1:])
-        return lista[0] if lista[0] > subMax else subMax
-    ```
+</details>
+
+<details>
+<summary>4.2 — Big-O do quicksort no melhor/caso médio e no pior?</summary>
+
+Médio: **O(n log n)**. Pior: **O(n²)**.
+
+</details>
+
+<details>
+<summary>4.3 — Reescreva `maximo` com caso-base de lista vazia/1 elemento.</summary>
+
+```python
+def maximo(lista):
+    if not lista:
+        return None
+    if len(lista) == 1:
+        return lista[0]
+    subMax = maximo(lista[1:])
+    return lista[0] if lista[0] > subMax else subMax
+```
+
+</details>
 
 ## Checklist de domínio
 

@@ -9,10 +9,11 @@ repetidamente o menor elemento restante.
 
 ## Analogia
 
-!!! note "Analogia: a lista de músicas favoritas"
-    Você quer ordenar suas músicas da mais tocada para a menos tocada. Percorre
-    toda a lista, acha a mais tocada e a coloca numa nova lista. Repete com as
-    restantes. Cada vez você varre a lista inteira de novo — por isso é "lento".
+:::note[Analogia: a lista de músicas favoritas]
+Você quer ordenar suas músicas da mais tocada para a menos tocada. Percorre
+toda a lista, acha a mais tocada e a coloca numa nova lista. Repete com as
+restantes. Cada vez você varre a lista inteira de novo — por isso é "lento".
+:::
 
 ## Arrays vs. listas ligadas
 
@@ -22,9 +23,10 @@ repetidamente o menor elemento restante.
 | Inserção/remoção (no ponto) | O(n) | **O(1)** |
 | Memória | posições contíguas | espalhada (com ponteiros) |
 
-!!! tip "Quando usar cada um"
-    Muitas **leituras aleatórias** → array. Muitas **inserções/remoções** →
-    lista ligada. Veja a discussão no [FAQ](../faq-duvidas.md).
+:::tip[Quando usar cada um]
+Muitas **leituras aleatórias** → array. Muitas **inserções/remoções** →
+lista ligada. Veja a discussão no [FAQ](../faq-duvidas.md).
+:::
 
 ## Como funciona o selection sort
 
@@ -65,42 +67,68 @@ print(ordenacaoPorSelecao([5, 3, 2, 9, 10, 2.5]))
 # [2, 2.5, 3, 5, 9, 10]
 ```
 
-!!! note "Detalhe: esta versão consome a lista original"
-    Como usa `arr.pop(...)`, a lista de entrada fica **vazia** ao final. Se quiser
-    preservar a original, passe uma cópia: `ordenacaoPorSelecao(minha[:])`.
+:::note[Detalhe: esta versão consome a lista original]
+Como usa `arr.pop(...)`, a lista de entrada fica **vazia** ao final. Se quiser
+preservar a original, passe uma cópia: `ordenacaoPorSelecao(minha[:])`.
+:::
 
 ## Complexidade (Big-O)
 
-!!! info "Tempo e espaço"
-    - **Tempo: O(n²)** — para cada um dos `n` elementos, você varre a lista
-      inteira procurando o menor (`buscaMenor` é O(n)).
-    - **Espaço: O(n)** — esta implementação cria uma nova lista `novoArr`.
+:::info[Tempo e espaço]
+- **Tempo: O(n²)** — para cada um dos `n` elementos, você varre a lista
+  inteira procurando o menor (`buscaMenor` é O(n)).
+- **Espaço: O(n)** — esta implementação cria uma nova lista `novoArr`.
+:::
 
 ## Dúvidas comuns
 
-??? question "Por que é O(n²) e não O(n × n/2)?"
-    A cada passo a lista diminui, então são n + (n-1) + ... + 1 operações, que dá
-    ~n²/2. Em Big-O, **constantes são ignoradas**, então fica **O(n²)**.
+<details>
+<summary>Por que é O(n²) e não O(n × n/2)?</summary>
 
-??? question "`buscaMenor` retorna o valor ou a posição?"
-    A **posição** (índice). Isso é necessário porque `arr.pop(indice)` remove pelo
-    índice.
+A cada passo a lista diminui, então são n + (n-1) + ... + 1 operações, que dá
+~n²/2. Em Big-O, **constantes são ignoradas**, então fica **O(n²)**.
 
-??? question "Selection sort é usado na prática?"
-    Raramente — é didático. Na vida real, use o `sorted()`/`.sort()` do Python
-    (que usa Timsort, O(n log n)). Você verá um algoritmo rápido no
-    [cap. 4 (quicksort)](04-quicksort.md).
+</details>
+
+<details>
+<summary>`buscaMenor` retorna o valor ou a posição?</summary>
+
+A **posição** (índice). Isso é necessário porque `arr.pop(indice)` remove pelo
+índice.
+
+</details>
+
+<details>
+<summary>Selection sort é usado na prática?</summary>
+
+Raramente — é didático. Na vida real, use o `sorted()`/`.sort()` do Python
+(que usa Timsort, O(n log n)). Você verá um algoritmo rápido no
+[cap. 4 (quicksort)](04-quicksort.md).
+
+</details>
 
 ## Exercícios
 
-??? success "2.1 — Você precisa de muitas leituras aleatórias. Array ou lista ligada?"
-    **Array** — leitura por índice é O(1).
+<details>
+<summary>2.1 — Você precisa de muitas leituras aleatórias. Array ou lista ligada?</summary>
 
-??? success "2.2 — Inserções frequentes no meio. Qual estrutura?"
-    **Lista ligada** — inserção/remoção é O(1) (uma vez no ponto certo).
+**Array** — leitura por índice é O(1).
 
-??? success "2.3 — Big-O do selection sort?"
-    **O(n²)** no tempo, em qualquer caso.
+</details>
+
+<details>
+<summary>2.2 — Inserções frequentes no meio. Qual estrutura?</summary>
+
+**Lista ligada** — inserção/remoção é O(1) (uma vez no ponto certo).
+
+</details>
+
+<details>
+<summary>2.3 — Big-O do selection sort?</summary>
+
+**O(n²)** no tempo, em qualquer caso.
+
+</details>
 
 ## Checklist de domínio
 

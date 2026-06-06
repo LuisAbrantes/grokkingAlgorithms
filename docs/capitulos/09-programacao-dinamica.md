@@ -9,10 +9,11 @@ foi resolvido. Funciona quando os subproblemas se **sobrepõem**. O exemplo clá
 
 ## Analogia
 
-!!! note "Analogia: preencher uma grade célula por célula"
-    Você monta uma **tabela** linha a linha. Cada célula usa o valor de células já
-    preenchidas (subproblemas menores já resolvidos). No fim, a última célula tem a
-    resposta ótima — e você nunca refez uma conta.
+:::note[Analogia: preencher uma grade célula por célula]
+Você monta uma **tabela** linha a linha. Cada célula usa o valor de células já
+preenchidas (subproblemas menores já resolvidos). No fim, a última célula tem a
+resposta ótima — e você nunca refez uma conta.
+:::
 
 ## O problema da mochila
 
@@ -73,39 +74,64 @@ print(lcs("fish", "fosh"))   # 3  (f, s, h)
 
 ## Complexidade (Big-O)
 
-!!! info "Tempo e espaço"
-    - **Mochila: O(n × capacidade)** — uma célula por item × capacidade.
-    - **LCS: O(m × n)** — tamanhos das duas strings.
+:::info[Tempo e espaço]
+- **Mochila: O(n × capacidade)** — uma célula por item × capacidade.
+- **LCS: O(m × n)** — tamanhos das duas strings.
 
-    Muito melhor que a força bruta O(2ⁿ).
+Muito melhor que a força bruta O(2ⁿ).
+:::
 
 ## Dúvidas comuns
 
-??? question "Quando usar programação dinâmica?"
-    Quando o problema tem **subproblemas sobrepostos** e você precisa da solução
-    **ótima**. Sinais: "maximizar/minimizar dada uma restrição", grade/tabela
-    natural, escolhas discretas (levar ou não levar).
+<details>
+<summary>Quando usar programação dinâmica?</summary>
 
-??? question "Qual a diferença entre DP e memoização?"
-    Memoização = guardar resultados de chamadas (top-down, recursivo). DP por tabela
-    = preencher de baixo para cima (bottom-up). As duas evitam recalcular.
+Quando o problema tem **subproblemas sobrepostos** e você precisa da solução
+**ótima**. Sinais: "maximizar/minimizar dada uma restrição", grade/tabela
+natural, escolhas discretas (levar ou não levar).
 
-??? question "DP × guloso?"
-    Guloso faz escolhas locais e aceita aproximação. DP explora as combinações via
-    tabela e dá a solução **ótima** exata. Veja o
-    [cap. 8](08-algoritmos-gulosos.md).
+</details>
+
+<details>
+<summary>Qual a diferença entre DP e memoização?</summary>
+
+Memoização = guardar resultados de chamadas (top-down, recursivo). DP por tabela
+= preencher de baixo para cima (bottom-up). As duas evitam recalcular.
+
+</details>
+
+<details>
+<summary>DP × guloso?</summary>
+
+Guloso faz escolhas locais e aceita aproximação. DP explora as combinações via
+tabela e dá a solução **ótima** exata. Veja o
+[cap. 8](08-algoritmos-gulosos.md).
+
+</details>
 
 ## Exercícios
 
-??? success "9.1 — Por que a mochila não é resolvida de forma gulosa (pegar o mais valioso)?"
-    Porque o item mais valioso pode ocupar peso demais e impedir uma combinação
-    melhor. A DP avalia as combinações via tabela.
+<details>
+<summary>9.1 — Por que a mochila não é resolvida de forma gulosa (pegar o mais valioso)?</summary>
 
-??? success "9.2 — Big-O da mochila por DP?"
-    **O(n × capacidade)**.
+Porque o item mais valioso pode ocupar peso demais e impedir uma combinação
+melhor. A DP avalia as combinações via tabela.
 
-??? success "9.3 — O que cada célula da tabela representa?"
-    O **maior valor** possível usando os primeiros `i` itens com capacidade `c`.
+</details>
+
+<details>
+<summary>9.2 — Big-O da mochila por DP?</summary>
+
+**O(n × capacidade)**.
+
+</details>
+
+<details>
+<summary>9.3 — O que cada célula da tabela representa?</summary>
+
+O **maior valor** possível usando os primeiros `i` itens com capacidade `c`.
+
+</details>
 
 ## Checklist de domínio
 

@@ -53,16 +53,18 @@ senhas, assinaturas e comunicação segura.
 
 ## Como continuar estudando
 
-!!! tip "Pratique resolvendo problemas"
-    - Reimplemente os algoritmos do livro **sem olhar**.
-    - Resolva problemas em plataformas (LeetCode, HackerRank, Beecrowd/URI).
-    - Ao estudar um tema novo, escreva uma página de capítulo como as deste site:
-      ideia central, analogia, código, Big-O, dúvidas, exercícios.
+:::tip[Pratique resolvendo problemas]
+- Reimplemente os algoritmos do livro **sem olhar**.
+- Resolva problemas em plataformas (LeetCode, HackerRank, Beecrowd/URI).
+- Ao estudar um tema novo, escreva uma página de capítulo como as deste site:
+  ideia central, analogia, código, Big-O, dúvidas, exercícios.
+:::
 
-!!! note "Conecte com o que você já sabe"
-    Muito do que vem a seguir reaproveita o básico: heaps usam árvores; bancos de
-    dados usam B-trees; busca usa índices invertidos; otimização usa gulosos e DP.
-    Revise os [capítulos anteriores](../index.md) sempre que precisar.
+:::note[Conecte com o que você já sabe]
+Muito do que vem a seguir reaproveita o básico: heaps usam árvores; bancos de
+dados usam B-trees; busca usa índices invertidos; otimização usa gulosos e DP.
+Revise os [capítulos anteriores](../index.md) sempre que precisar.
+:::
 
 ## Checklist de domínio
 
