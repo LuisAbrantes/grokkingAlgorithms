@@ -1,0 +1,17 @@
+# Saída do build do MkDocs
+site/
+
+# Ambiente virtual Python
+.venv/
+venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sistema operacional / editores
+.DS_Store
+.idea/
+.vscode/
