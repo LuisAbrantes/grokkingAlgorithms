@@ -54,8 +54,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl:
-            'https://github.com/LuisAbrantes/grokkingAlgorithms/edit/main/',
+          // Sem editUrl: remove o link "Editar esta página" (ninguém edita pelo site).
         },
         blog: false,
         theme: {
